@@ -19,13 +19,13 @@ function Product(props: any) {
   const googleDriveLink = "https://pdflink.to/38a064c4/";
   var purchased = false;
   const { push } = useRouter();
-  let jsonString: any;
+  let IDjson: any;
 
   if (typeof window !== "undefined") {
-    jsonString = sessionStorage.getItem("id");
+    IDjson = sessionStorage.getItem("id");
   }
 
-  if (jsonString === null) {
+  if (IDjson === null) {
     toast("Please Login", {
       toastId: "oneTime1",
       position: "top-center",
@@ -36,12 +36,12 @@ function Product(props: any) {
     }, 2000);
     push("/login");
   }
-    console.log(jsonString);
-    const myObject = JSON.parse(jsonString);
+    console.log(IDjson);
+    const myObject = JSON.parse(IDjson);
     const { isError, isSuccess, isLoading, data, error } = useQuery({
       queryKey: ["purchased"],
       queryFn: () => alreadyPurchased(myObject.id, myObject.jwt),
-      enabled: !!jsonString
+      enabled: !!IDjson
     });
 
     if (isLoading) {

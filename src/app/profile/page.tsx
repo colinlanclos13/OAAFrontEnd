@@ -10,9 +10,9 @@ import ProfileComp from "../componets/ProfileComp";
 export default function Profile() {
   const { push } = useRouter();
 
-  const jsonString = sessionStorage.getItem("id");
+  const IDjson = sessionStorage.getItem("id");
 
-  if (jsonString === null) {
+  if (IDjson === null) {
     toast("Please Login", {
       toastId: "oneTime1",
       position: "top-center",

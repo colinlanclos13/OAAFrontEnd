@@ -26,12 +26,12 @@ function ModalUpdatePlayer(props: any) {
       .lt(100000000000, { message: "Invalid Number" }),
   });
 
-  let jsonString: any;
+  let IDjson: any;
 
   if (typeof window !== "undefined") {
-    jsonString = sessionStorage.getItem("id");
+    IDjson = sessionStorage.getItem("id");
   }
-  const myObject = JSON.parse(jsonString);
+  const myObject = JSON.parse(IDjson);
 
   const mutation = useMutation({
     mutationFn: (data: updatePlayerDataData) => {

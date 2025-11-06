@@ -32,13 +32,13 @@ export default function AnalysisVideos() {
   const [search, setSearch] = useState(" ");
   const [category, setCategory] = useState("title");
   const { push } = useRouter();
-  let jsonString: any;
+  let idJSON: any;
 
   if (typeof window !== "undefined") {
-    jsonString = sessionStorage.getItem("id");
+    idJSON = sessionStorage.getItem("id");
   }
 
-  if (jsonString === null) {
+  if (idJSON === null) {
     toast("Please Login", {
       toastId: "oneTime1",
       position: "top-center",
@@ -49,13 +49,13 @@ export default function AnalysisVideos() {
     }, 2000);
     push("/login");
   } 
-    console.log(jsonString);
-    const myObject = JSON.parse(jsonString);
+    console.log(idJSON);
+    const myObject = JSON.parse(idJSON);
 
     const { isError, isSuccess, isLoading, data, error } = useQuery({
       queryKey: ["video"],
       queryFn: () => GetAnalyses(myObject.id, myObject.jwt),
-      enabled: !!jsonString
+      enabled: !!idJSON
     });
     if (isError) {
       toast.error("Something went wrong" + error);

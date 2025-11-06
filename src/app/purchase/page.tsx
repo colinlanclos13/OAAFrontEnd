@@ -27,16 +27,16 @@ export default function Purchase() {
     cost: number;
   };
 
-  let myObject: any
+  let JWT_ID: any
 
   const { push } = useRouter();
-  let jsonString: any;
+  let IDjson: any;
 
   if (typeof window !== "undefined") {
-    jsonString = sessionStorage.getItem("id");
+    IDjson = sessionStorage.getItem("id");
   }
 
-  if (jsonString === null) {
+  if (IDjson === null) {
     toast("Please Login", {
       toastId: "oneTime1",
       position: "top-center",
@@ -47,15 +47,15 @@ export default function Purchase() {
     }, 2000);
     push("/login");
   }else{
-    myObject = JSON.parse(jsonString);
+    JWT_ID = JSON.parse(IDjson);
   }
     
 
     const { isError, isSuccess, isLoading, data, error } = useQuery({
       queryKey: ["purchased"],
-      enabled: !!jsonString,
+      enabled: !!IDjson,
       queryFn: () =>
-        GetListOfPurchasesdAndNonPurchasedPrograms(myObject.id, myObject.jwt),
+        GetListOfPurchasesdAndNonPurchasedPrograms(JWT_ID.id, JWT_ID.jwt),
     });
     if (isError) {
       console.log(error);
