@@ -1,0 +1,150 @@
+@import '/src//app/stylesheets/colors';
+
+// Example usage
+body {
+  background-color: $main-color;
+  color: $secondary-color;
+}
+
+.header {
+  background-color: $vermilion-hex;
+}
+
+.footer {
+  background-color: $dark-red-hex;
+}
+
+
+.c-item{
+    height: 480px;
+}
+
+.paypal-button-container{
+    width: 250px;
+    height: 100px;
+}
+
+img{
+    filter: blur();
+}
+
+.navbar{
+    transition: all 0.5s;
+}
+
+.NavBarCustom{
+    position:absolute;
+    width:100%;
+    z-index:10;
+    max-width:100%; 
+}
+.NavBarCustom:hover{
+    background-color: black;
+}
+
+.navbar-scrolled{
+    background-color: black;
+    box-shadow: 0 3px 10px rgba(0, 0, 0 , 0.15);
+}
+
+.carousel-control-next {
+    visibility: hidden;
+}
+.carousel-control-prev{
+    visibility: hidden;
+}
+
+img{
+    filter: brightness(100%);
+}
+
+.c-img{
+ height: 100%;
+ object-fit: cover;
+}
+
+
+
+.img-in-card{
+    width: 100%;
+    //aspect-ratio: 3/2;
+    height: auto;
+    align-self: auto;
+    object-fit: contain;
+    filter: brightness(50%);
+    transition-delay: 2s;
+}
+.imgs-in-carsousel{
+    filter:brightness(75%)
+}
+
+.card{
+    filter: drop-shadow(16px 16px 20px black); 
+    overflow: hidden;
+    transition-delay: 500ms;
+}
+
+.hidden1{
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s ease;
+}
+.show1{
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+    transition: all 1s ease;
+}
+
+.div-car img{
+    height: 90vh;
+}
+
+.carousel-control-next{
+    height: inherit;
+}
+
+
+
+.hidden2{
+    opacity: 0;
+    filter: blur(0px);
+    transform: translateX(-100%);
+    transition: all 1s ease;
+    transition-delay: 500ms;
+}
+
+.show2{
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+    transition: all 1s ease;
+    transition-delay: 500ms;
+    
+}
+
+.card-containter{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.bottom_PageContainer{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2,50% );
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.item-1{
+    margin-left: 30px;
+    /*flex-grow: 1;*/
+}
+
+.item-2{
+    width: 500;
+
+}

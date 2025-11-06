@@ -1,0 +1,14 @@
+body{
+    background-color: rgb(158, 153, 153); 
+    background-repeat:no-repeat;
+}
+
+.container{
+    backdrop-filter: blur(20px);
+}
+
+
+form{
+    background-color: aliceblue;
+    border-radius: 5px;
+}
