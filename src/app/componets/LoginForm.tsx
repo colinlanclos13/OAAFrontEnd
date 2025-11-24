@@ -2,7 +2,6 @@
 
 import React, { useEffect } from "react";
 import Image from "next/image";
-import logo from "../../../public/imgs/EMlogoCopy.png";
 import { SubmitHandler, set, useForm } from "react-hook-form";
 import { z } from "zod";
 import Row from "react-bootstrap/esm/Row";
@@ -75,20 +74,18 @@ function LoginForm() {
 
   return (
     <div className="col container w-100 d-flex justify-content-center g-3 mt-3">
-      <div className="row">
-        <div className="card bg-transparent border-0">
-          <div className="crop">
-            <Image className="card-img" src={logo} alt="Logo" />
-          </div>
-          <div className="card-body justify-content-end align-items-center text-center">
-            <h2 className="card-text" style={{ color: "rgb(120, 173, 207)" }}>
-              EMerged Player Development
-            </h2>
-          </div>
+      <div className="row d-flex justify-content-center align-items-center">
+        <div className="d-flex justify-content-center align-items-center">
+          <img
+            src="/imgs/OAA_Logos/cropped_OAALOGO.PNG"
+            className="img-fluid"
+            style={{ maxWidth: "300px", height: "auto" }}
+            alt="Logo"
+          />
         </div>
-        <div className="row">
+        <div className="row justify-content-center align-items-center">
           <form
-            className="p-3 container mb-5"
+            className="p-3 mb-5"
             onSubmit={handleSubmit(onSubmit)}
           >
             <h5>Login</h5>

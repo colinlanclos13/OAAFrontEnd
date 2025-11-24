@@ -10,16 +10,14 @@ function Navbar() {
     <div className="sticky-top">
       <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top bg-dark bg-gradient">
         <div className="container-fluid d-flex justify-content-between">
-          <a className="navbar-brand" href="#" onClick={() => push("/")}>
-            <img
-              src="/imgs/EMlogoCopy.png"
-              style={{ width: "150px", height: "auto" }}
-              className="img-fluid"
-              alt="..."
-            />
-            EM Sports
-          </a>
-
+        <a className="navbar-brand d-flex align-items-center" onClick={() => push("/")}>
+          <img
+            src="/imgs/OAA_Logos/cropped_OAALOGO.PNG"
+            className="img-fluid"
+            style={{ maxWidth: "125px", maxHeight:'auto'}}
+            alt="logo"
+          />
+        </a>
           <button
             className="navbar-toggler"
             type="button"

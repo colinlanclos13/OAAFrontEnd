@@ -92,10 +92,10 @@ function FormExample() {
 
   return (
     <form
-      className="container col-10 p-4 mt-3 mb-3"
+      className="container col-10 p-3 mt-3 mb-3"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Row className="col-6 mx-auto">
+      <Row className="col-8 mx-auto">
         <h4>Register</h4>
         <label className="form-label" htmlFor="email">
           Email
@@ -112,7 +112,7 @@ function FormExample() {
           <div className="text-danger">{errors.email.message}</div>
         )}
       </Row>
-      <Row className="mt-3 col-6 mx-auto">
+      <Row className="mt-3 col-8 mx-auto">
         <label className="form-label" htmlFor="email">
           Confirm Email
         </label>
@@ -128,7 +128,7 @@ function FormExample() {
           <div className="text-danger">{errors.confirmEmail.message}</div>
         )}
       </Row>
-      <Row className="mt-3 col-6 mx-auto">
+      <Row className="mt-3 col-8 mx-auto">
         <label className="form-label" htmlFor="Name">
           First and Last Name
         </label>
@@ -143,7 +143,7 @@ function FormExample() {
           <div className="text-danger">{errors.Name.message}</div>
         )}
       </Row>
-      <Row className="mt-3 col-6 mx-auto">
+      <Row className="mt-3 col-8 mx-auto">
         <label className="form-label" htmlFor="age">
           Age
         </label>
@@ -156,7 +156,7 @@ function FormExample() {
         />
         {errors.age && <div className="text-danger">{errors.age.message}</div>}
       </Row>
-      <Row className="mt-3 col-6 mx-auto">
+      <Row className="mt-3 col-8 mx-auto">
         <label className="form-label" htmlFor="phoneNum">
           Phone Number
         </label>
@@ -171,7 +171,7 @@ function FormExample() {
           <div className="text-danger">{errors.phoneNum.message}</div>
         )}
       </Row>
-      <Row className="mt-3 col-6 mx-auto">
+      <Row className="mt-3 col-8 mx-auto">
         <label className="form-label" htmlFor="password">
           Password
         </label>
@@ -191,7 +191,7 @@ function FormExample() {
           <div className="text-danger">{errors.password.message}</div>
         )}
       </Row>
-      <Row className="mt-3 col-6 mx-auto">
+      <Row className="mt-3 col-8 mx-auto">
         <label className="form-label" htmlFor="confirmPassword">
           Confirm Password
         </label>
@@ -206,7 +206,7 @@ function FormExample() {
           <div className="text-danger">{errors.confirmPassword.message}</div>
         )}
       </Row>
-      <Row className="mt-3 col-6 mx-auto ">
+      <Row className="mt-3 col-8 mx-auto ">
         <button
           className="mt-3 btn btn-primary"
           disabled={isSubmitting}

@@ -12,7 +12,6 @@ export const SendPictureToGravatar = async (email: string) => {
     }
   );
   console.log(response);
-  console.log("boory cheeks");
   return response.data;
 };
 
