@@ -15,6 +15,7 @@ function ModalUpdatePlayer(props: any) {
     name: string;
     age: number;
     phone: number;
+    email: string; 
   };
 
   const schema = z.object({
@@ -24,6 +25,7 @@ function ModalUpdatePlayer(props: any) {
       .number()
       .gt(999999999, { message: "Invalid Number" })
       .lt(100000000000, { message: "Invalid Number" }),
+    email: z.string().min(1),
   });
 
   let IDjson: any;
@@ -54,13 +56,13 @@ function ModalUpdatePlayer(props: any) {
   } = useForm<FormFields>({ resolver: zodResolver(schema) });
 
   const onSubmit: SubmitHandler<FormFields> = async (registerInput) => {
-    const passwordResetData = {
+    const updatePlayerData = {
       name: registerInput.name,
       age: registerInput.age,
       phone: registerInput.phoneNum,
+      email: registerInput.email,
     };
-    console.log(passwordResetData);
-    mutation.mutate(passwordResetData);
+    mutation.mutate(updatePlayerData);
   };
 
   type FormFields = z.infer<typeof schema>;
@@ -131,6 +133,23 @@ function ModalUpdatePlayer(props: any) {
             />
             {errors.phoneNum && (
               <div className="text-danger">{errors.phoneNum?.message}</div>
+            )}
+          </Row>
+          <Row className="mt-3 col-6 mx-auto">
+            <label className="form-label" htmlFor="email">
+              Email
+            </label>
+            <input
+              className="form-control"
+              {...register("email")}
+              id="email"
+              name="email"
+              type="string"
+              placeholder="email"
+              defaultValue={props.email}
+            />
+            {errors.email && (
+              <div className="text-danger">{errors.email?.message}</div>
             )}
           </Row>
           <Row className="mt-3 col-6 mx-auto ">

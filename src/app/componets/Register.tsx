@@ -55,7 +55,7 @@ const schema = z
 type FormFields = z.infer<typeof schema>;
 
 //register component
-function FormExample() {
+function RegissterForm() {
   const { push } = useRouter();
 
   const mutation = useMutation({
@@ -92,7 +92,7 @@ function FormExample() {
 
   return (
     <form
-      className="container col-10 p-3 mt-3 mb-3"
+      className="container text-light col-10 p-3 mt-3 mb-3"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Row className="col-8 mx-auto">
@@ -222,4 +222,4 @@ function FormExample() {
   );
 }
 
-export default FormExample;
+export default RegissterForm;

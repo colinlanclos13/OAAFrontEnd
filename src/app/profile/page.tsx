@@ -6,23 +6,30 @@ import Navbar from "../componets/Navbar";
 import "../styles.scss";
 import { useRouter } from "next/navigation";
 import ProfileComp from "../componets/ProfileComp";
+import { useEffect } from "react";
 
 export default function Profile() {
   const { push } = useRouter();
 
-  const IDjson = sessionStorage.getItem("id");
+  useEffect(() => {
+    const IDjson = sessionStorage.getItem("id");
+    console.log(IDjson);
 
-  if (IDjson === null) {
-    toast("Please Login", {
-      toastId: "oneTime1",
-      position: "top-center",
-      autoClose: 5000,
-    });
-    setTimeout(() => {
-      console.log("Hello, World!");
-    }, 2000);
-    push("/login");
-  }
+    if (IDjson === null) {
+      toast("Please Login", {
+        toastId: "oneTime1",
+        position: "top-center",
+        autoClose: 5000,
+      });
+
+      setTimeout(() => {
+        console.log("Hello, World!");
+      }, 2000);
+
+      push("/login");
+    }
+  }, []);
+
   return (
     <>
       <Navbar />

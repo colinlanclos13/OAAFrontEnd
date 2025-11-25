@@ -236,7 +236,7 @@ export const ChangePassword = async (
   return response.data;
 };
 
-//change password with old passowrd
+//update player information
 export const UpdateUserInformation = async (
   id: string,
   tokenStr: string,
@@ -254,6 +254,7 @@ export const UpdateUserInformation = async (
       },
     }
   );
+  console.log("in the call")
   console.log(response.data);
   return response.data;
 };

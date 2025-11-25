@@ -39,7 +39,6 @@ function ProfileComp() {
     }
     const [modalShow1, setModalShow1] = useState(false);
     const [modalShow2, setModalShow2] = useState(false);
-    const [modalShow3, setModalShow3] = useState(false);
 
     return (
       <>
@@ -89,6 +88,7 @@ function ProfileComp() {
                     <p className="card-text fw-bold">{data.name}</p>
                     <p className="card-text">Age: {data.age}</p>
                     <p className="card-text">Phone: {data.phone}</p>
+                    <p className="card-text">Email: {data.email}</p>
                     <p className="card-text"> Password: *******</p>
                     <Button
                       variant="primary"
@@ -116,6 +116,7 @@ function ProfileComp() {
                       name={data.name}
                       phone={data.phone}
                       age={data.age}
+                      email={data.email}
                     />
                     <OverlayTrigger
                       placement="right"

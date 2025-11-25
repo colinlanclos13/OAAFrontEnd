@@ -66,9 +66,9 @@ function Navbar() {
                 <a
                   className="nav-link"
                   href="#"
-                  onClick={() => push("/AnalysisVideos")}
+                  onClick={() => push("/VideoCatalog")}
                 >
-                  <h5>Analysis Videos</h5>
+                  <h5>Video Catalog</h5>
                 </a>
               </li>
               <li className="nav-item">
