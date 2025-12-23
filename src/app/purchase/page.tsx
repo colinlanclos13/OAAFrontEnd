@@ -14,9 +14,10 @@ import { toast, ToastContainer } from "react-toastify";
 import ProgramRow from "../componets/ProgramRow";
 import Stack from "react-bootstrap/esm/Stack";
 import Container from "react-bootstrap/esm/Container";
-import { GetListOfPurchasesdAndNonPurchasedPrograms } from "../services/Queries";
+import { GetListOfProgramsNotLogin, GetListOfPurchasesdAndNonPurchasedPrograms } from "../services/Queries";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "react-bootstrap/esm/Spinner";
+import ProgramRowNotLogin from "../componets/ProgramRowNotLogin";
 
 export default function Purchase() {
   type rowData1 = {
@@ -26,6 +27,11 @@ export default function Purchase() {
     linkToProgram: string;
     cost: number;
   };
+
+  type rowDataNotLogin = {
+    programName: string;
+    description: string;
+  }
 
   let JWT_ID: any
 
@@ -37,25 +43,23 @@ export default function Purchase() {
   }
 
   if (IDjson === null) {
-    toast("Please Login", {
+    toast("Please Login to View Purchased Programs", {
       toastId: "oneTime1",
       position: "top-center",
       autoClose: 5000,
     });
-    setTimeout(() => {
-      console.log("Hello, World!");
-    }, 2000);
-    push("/login");
   }else{
     JWT_ID = JSON.parse(IDjson);
   }
     
 
     const { isError, isSuccess, isLoading, data, error } = useQuery({
-      queryKey: ["purchased"],
-      enabled: !!IDjson,
+      queryKey: ["purchased", IDjson],
+      enabled: true,
       queryFn: () =>
-        GetListOfPurchasesdAndNonPurchasedPrograms(JWT_ID.id, JWT_ID.jwt),
+        IDjson === null
+          ? GetListOfProgramsNotLogin()
+          : GetListOfPurchasesdAndNonPurchasedPrograms(JWT_ID.id, JWT_ID.jwt),
     });
     if (isError) {
       console.log(error);
@@ -65,21 +69,7 @@ export default function Purchase() {
     if (isSuccess) {
       console.log(data);
     }
-    const rowData2 = [
-      {
-        programId: 1,
-        programName: "Program A",
-        description: "This is Program A description.",
-        linkToProgram: "https://example.com/program-a",
-      },
-      {
-        programId: 2,
-        programName: "Program B",
-        description: "This is Program B description.",
-        linkToProgram: "https://pdflink.to/38a064c4/",
-      },
-      // Add more objects as needed
-    ];
+    
     //first thing is for loading idk if this is good. Just trying things
     return (
       <>
@@ -87,38 +77,45 @@ export default function Purchase() {
         <div className="col">
           <Container>
             <Stack gap={5} className="mt-5 mb-5">
-              {isLoading || !isSuccess || isError ? (
-                <>
-                  <>
-                    <Row className="bg-dark rounded pt-4 pb-4">
-                      <Col>
-                        <Spinner animation="border" />
-                      </Col>
-                    </Row>
-                    <Row className="bg-dark rounded pt-4 pb-4">
-                      <Col>
-                        <Spinner animation="border" />
-                      </Col>
-                    </Row>
-                    <Row className="bg-dark rounded pt-4 pb-4">
-                      <Col>
-                        <Spinner animation="border" />
-                      </Col>
-                    </Row>
-                  </>
-                </>
-              ) : (
-                data?.map((item: rowData1) => (
-                  <ProgramRow
-                    key={item.programId}
-                    programId={item.programId}
-                    programName={item.programName}
-                    description={item.description}
-                    linkToProgram={item.linkToProgram}
-                    cost={item.cost}
-                  />
-                ))
-              )}
+            {isLoading || !isSuccess || isError ? (
+        <>
+          <Row className="bg-dark rounded pt-4 pb-4">
+            <Col>
+              <Spinner animation="border" />
+            </Col>
+          </Row>
+          <Row className="bg-dark rounded pt-4 pb-4">
+            <Col>
+              <Spinner animation="border" />
+            </Col>
+          </Row>
+          <Row className="bg-dark rounded pt-4 pb-4">
+            <Col>
+              <Spinner animation="border" />
+            </Col>
+          </Row>
+        </>
+      ) : IDjson === null ? (
+        data?.map((item: rowDataNotLogin) => (
+          <ProgramRowNotLogin
+            key={item.programName} // make sure each item has a unique key
+            programName={item.programName}
+            description={item.description}
+          />
+        ))
+      ) : (
+        data?.map((item: rowData1) => (
+          <ProgramRow
+            key={item.programId}
+            programId={item.programId}
+            programName={item.programName}
+            description={item.description}
+            linkToProgram={item.linkToProgram}
+            cost={item.cost}
+          />
+        ))
+      )}
+
             </Stack>
           </Container>
         </div>

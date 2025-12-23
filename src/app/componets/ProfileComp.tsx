@@ -88,7 +88,7 @@ function ProfileComp() {
                     <p className="card-text fw-bold">{data.name}</p>
                     <p className="card-text">Age: {data.age}</p>
                     <p className="card-text">Phone: {data.phone}</p>
-                    <p className="card-text">Email: {data.email}</p>
+                    <p className="card-text">Phone: {data.email}</p>
                     <p className="card-text"> Password: *******</p>
                     <Button
                       variant="primary"

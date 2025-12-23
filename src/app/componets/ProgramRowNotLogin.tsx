@@ -10,18 +10,14 @@ import Container from "react-bootstrap/esm/Container";
 import internal from "stream";
 import ModalForPurchasingProduct from "./ModelPurchaseProduct";
 
-type rowData = {
-  programId: number;
-  programName: string;
-  description: string;
-  linkToProgram: string;
-  cost: number;
-};
+type rowDataNotLogin = {
+    programName: string;
+    description: string;
+  }
 
 //row for certain progrma that are put in list
-function ProgramRow(props: rowData) {
+function ProgramRowNotLogin(props: rowDataNotLogin) {
   const [open, setOpen] = useState(false);
-  const [openPurchase, setOpenPurchase] = useState(false);
   const [isPurchased, setIsPurchased] = useState(false);
   const [modalShow, setModalShow] = useState(false);
 
@@ -39,28 +35,9 @@ function ProgramRow(props: rowData) {
               Click Me For Discription
             </Button>
           </Col>{" "}
-          {props.linkToProgram.includes("https://pdflink") ? (
-            <Col className="fs-3">
-              <a
-                href={props.linkToProgram}
-                target="_blank"
-                style={{ textDecoration: "none" }}
-              >
-                Link To Program
-              </a>
-            </Col>
-          ) : (
-            <Col>
-              <Button onClick={() => setOpenPurchase(!openPurchase)} variant="primary">
-                  Click To See How to Purchase Program
-              </Button>
-            </Col>
-          )}
+          
           <Collapse in={open}>
             <div id="example-collapse-text">{props.description}</div>
-          </Collapse>
-          <Collapse in={openPurchase}>
-            <div id="example-collapse-text">Contact Us to Purchase a Porgram</div>
           </Collapse>
         </Row>
       </div>
@@ -68,4 +45,4 @@ function ProgramRow(props: rowData) {
   );
 }
 
-export default ProgramRow;
+export default ProgramRowNotLogin;

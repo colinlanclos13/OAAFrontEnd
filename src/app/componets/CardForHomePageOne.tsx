@@ -22,10 +22,10 @@ function CardForHomePageOne() {
         alt="..."
       />
       <div className="card-img-overlay">
-        <h5 className="card-title fs-3">Purchase Our Programs</h5>
+        <h5 className="card-title fs-3">View Our Programs</h5>
         <p className="card-text fs-5">Get Access to our Program</p>
         <a href="/purchase" className="btn btn-info text-white">
-          Buy Program
+          To Programs
         </a>
       </div>
     </div>

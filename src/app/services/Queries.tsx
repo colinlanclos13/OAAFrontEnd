@@ -52,6 +52,21 @@ type PasswordReset = {
   confirmPassword: string;
 };
 
+type UpdateVideoCatalogData= {
+    videoCatalogId: any,
+    url: string,
+    title: string,
+    discription: string
+    jwtString: string
+  }
+
+type CreateVideoCatalog = {
+    url: string,
+    title: string,
+    discription: string
+    jwt: string
+}
+
 //register page
 export const requestToRegister = async (data: registerData) => {
   const response = await axios.post(
@@ -196,6 +211,14 @@ export const GetListOfPurchasesdAndNonPurchasedPrograms = async (
   return response.data;
 };
 
+//Get List of Programs if Not Login
+export const GetListOfProgramsNotLogin = async() => {
+  const response = await axios.get("http://localhost:5222/api/program/getAllProgramsNonLogin");
+
+  console.log(response.data)
+  return response.data;
+}
+
 //get profile information
 export const GetProfileInformation = async (id: string, tokenStr: string) => {
   const response = await axios.get(
@@ -307,3 +330,54 @@ export const SendVideoRequest = async (
   console.log(response.data);
   return response.data;
 };
+
+//Get Video Catalog
+export const GetVideoCatalog = async() =>{
+  const url = "http://localhost:5222/api/VideoCatalog/getVideoCatalog";
+
+  const response = await axios.get(url);
+
+  console.log(response.data)
+  return response.data;
+}
+
+//only admin
+export const UpdateVideoCatalog = async(updateJson: UpdateVideoCatalogData ) => {
+  const url = "http://localhost:5222/api/VideoCatalog/updateVideoCatalog"
+  const response = axios.post(url, updateJson,{headers: {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${updateJson.jwtString}`,
+  }});
+  return response;
+}
+
+//only admin
+export const DeleteVideoCatalog = async(id: number,jwtString:string) => {
+  const url = "http://localhost:5222/api/VideoCatalog/deleteVideoCatal"
+  const response = await axios.get(url + id,{headers: {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${jwtString}`,
+  }}, )
+  return response.data;
+
+}
+
+//only admain
+export const CreateVideoCatalog = async(newVideoCatalog: CreateVideoCatalog) => {
+  const url = "http://localhost:5222/api/VideoCatalog/createVideoCatalog"
+  console.log("here")
+  console.log(newVideoCatalog.jwt)
+  const response = await axios.post(url,newVideoCatalog,{
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${newVideoCatalog.jwt}`,
+    }, 
+  })
+  return response.data;
+}
